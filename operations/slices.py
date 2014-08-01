@@ -13,5 +13,8 @@ def different_slices():
     print("Everything but the last: " + string[:6])
     print("Everything but the last (2): " + string[:-1])
     print("Full copy of the string: " + string[:])
+    print("Every second symbol: " + string[::2])
+    print("In reverse order: " + string[::-1])
+    print("Middle part of the string: " + string[5:1:-1])
 
 different_slices()
