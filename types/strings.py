@@ -41,7 +41,17 @@ def string_formatting():
     print("{} of {} 3".format(string_one, string_two))
 
 
+def string_formatting_with_dict():
+    data = dict(name="Bob", action="working")
+    formatted_string_first = "1: %(name)s is %(action)s"
+    print(formatted_string_first % data)
+
+    formatted_string_second = "2: {name} is {action}"
+    print(formatted_string_second.format(name="Ann", action="cooking"))
+
+
 repeat_string()
 immutability()
 transform_to_list()
 string_formatting()
+string_formatting_with_dict()
