@@ -49,6 +49,10 @@ def string_formatting_with_dict():
     formatted_string_second = "2: {name} is {action}"
     print(formatted_string_second.format(name="Ann", action="cooking"))
 
+    from string import Template
+    temp = Template("3: $name is $action")
+    print(temp.substitute(name="Jane", action="reading"))
+
 
 repeat_string()
 immutability()
