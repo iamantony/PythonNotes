@@ -40,9 +40,13 @@ def sorting():
 
     some_list.sort()
     print("Standart sorting: " + str(some_list))
+    print("Via standart function: " + str(sorted(some_list)))
 
     some_list.sort(key=abs)
     print("Sorting by absolute values: " + str(some_list))
+
+    some_list.sort(reverse=True)
+    print("Sorting in reverse order: " + str(some_list))
 
 
 nesting()
