@@ -1,4 +1,4 @@
-__author__ = 'Anotny Cherepanov'
+__author__ = 'Antony Cherepanov'
 
 
 # If we import whole file (module) "several_variables.py", we will get:

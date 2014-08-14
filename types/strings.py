@@ -1,4 +1,4 @@
-__author__ = 'Anotny Cherepanov'
+__author__ = 'Antony Cherepanov'
 
 
 def repeat_string():

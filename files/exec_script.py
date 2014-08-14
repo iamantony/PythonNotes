@@ -1,4 +1,4 @@
-__author__ = 'Anotny Cherepanov'
+__author__ = 'Antony Cherepanov'
 
 # Quick way to execute some code in other module:
 # open file -> read its' content -> execute code
