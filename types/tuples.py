@@ -36,6 +36,29 @@ def immutability():
     print("After list modification: " + str(second_tuple))
 
 
+def assignment():
+    print("\nassignment()")
+
+    print("Assign string to variables in tuple:")
+    (a, b, c) = "ABC"
+    print(a, b)
+
+
+def extended_sequence_unpacking():
+    print("\nextended_sequence_unpacking()")
+
+    simple_list = [1, 2, 3, 4, 5]
+    print("We have some object (string, list, tuple, set): " + str(simple_list))
+    print("Suppose, we want only first and the last element of this object.")
+    print("And we don't know the length of it.")
+    print("We can use Extended Sequence unpacking:")
+    first, *middle, last = simple_list
+    print("First = " + str(first))
+    print("Last = " + str(last))
+    print("Middle = " + str(middle))
+
 
 ways_to_create()
 immutability()
+assignment()
+extended_sequence_unpacking()
