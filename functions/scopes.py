@@ -114,7 +114,119 @@ def closures():
     print("Acts the same: " + str(lambda_mk(3)))
 
 
+def nonlocal_examples():
+    print("\nnonlocal_examples")
+    print("We know that in nested function we can reference variables that " +
+          "was declared in enclosing function.")
+    print("We can use them, but can not change (static variables).")
+    print("So if we want more control on variables, we " +
+          "should use 'nonlocal' keyword")
+
+    static_var = 64
+    mutable_list = [1, 2]
+
+    print("We declare two variables: static and mutable:")
+    print(static_var)
+    print(mutable_list)
+
+    def nested_func():
+        nonlocal static_var
+
+        print("Inside nested function:")
+        print("Static variable = " + str(static_var))
+        print("We can use it here only because this: 'nonlocal static_var'")
+        print("Mutable variable = " + str(mutable_list))
+
+        print("Let's try to change static variable:")
+        static_var += 10
+        print(static_var)
+
+        print("Let's try to change mutable variable:")
+        mutable_list[0] = "changed"
+        print(mutable_list)
+
+    nested_func()
+
+    print("Remember:")
+    print("- nonlocal variables must have been previously assigned " +
+          "in enclosing function")
+    print("- nonlocal restricts scope lookup to enclosing defs.")
+    print("So you can't use nonlocal keyword with global variable")
+
+
+def closures_with_nonlocal():
+    print("\nclosures_with_nonlocal")
+    print("With nonlocal it's easy to create closures that will have")
+    print("it's own individual state that can't be changed outside")
+
+    def maker(n):
+        degree = n
+
+        def action():
+            nonlocal degree
+            print("Closure with degree " + str(degree))
+            degree += 1
+
+        return action
+
+    print("We have two closures, that have different initial state " +
+          "(value of degree). Each call they increment it by one.")
+    first = maker(2)
+    second = maker(10)
+
+    first()
+    second()
+    first()
+    second()
+
+
+def function_attributes():
+    print("\nfunction_attributes")
+    print("Another way to create closures with state retention - " +
+          "function attributes")
+
+    def maker(n):
+        degree = n
+
+        def action():
+            print("Closure with degree " + str(action.degree))
+            action.degree += 1
+
+        action.degree = degree
+        return action
+
+    print("We have two closures, that have different initial state " +
+          "(value of degree). Each call they increment it by one.")
+    first = maker(63)
+    second = maker(8)
+
+    first()
+    second()
+    first()
+    second()
+
+    print("This method of state retention for closures is portable: " +
+          "we can us it with 2.X and 3.X")
+    print("Also we have access to closures attributes outside: " +
+          str(second.degree))
+
+
+
 first_way_to_change_global()
 second_way_to_change_global()
 nested_functions()
 closures()
+nonlocal_examples()
+closures_with_nonlocal()
+function_attributes()
+
+print("\nUpshot\n")
+print("global makes scope lookup begin in the enclosing module’s scope and")
+print("allows names there to be assigned. Scope lookup continues on to the")
+print("built-in scope if the name does not exist in the module, but ")
+print("assignments to global names always create or change them in the")
+print("module’s scope\n")
+
+print("nonlocal restricts scope lookup to just enclosing defs, requires that")
+print("the names already exist there, and allows them to be assigned.")
+print("Scope lookup does not continue on to the global or built-in scopes\n")
