@@ -24,6 +24,17 @@ def different_ways_to_print():
     os.remove("test.txt")
 
 
+def print_object_info():
+    print("\nprint_object_info()")
+    print("Sometimes we want to know with what object we are working.")
+    print("For that purpose we can use function id().")
+    print("It return address of the object. Example: ")
+    print(id("string"))
+    print("To convert address to hex number use hex()")
+    simple_list = [1, 2]
+    print(str(simple_list) + " = " + hex(id(simple_list)))
+
+
 def stdout_redirection():
     print("\nstdout_redirection()")
 
@@ -41,4 +52,5 @@ def stdout_redirection():
 
 
 different_ways_to_print()
+print_object_info()
 stdout_redirection()
